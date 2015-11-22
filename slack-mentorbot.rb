@@ -1,3 +1,6 @@
 require 'slack-ruby-bot'
-require 'slack-mentorbot/commands/calculate'
+require 'slack-mentorbot/commands/random'
+require 'slack-mentorbot/commands/mentors'
+require 'slack-mentorbot/commands/students'
+require 'slack-mentorbot/commands/appointments'
 require 'slack-mentorbot/app'

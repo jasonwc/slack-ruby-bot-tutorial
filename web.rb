@@ -3,7 +3,7 @@ require 'sinatra/base'
 module SlackMentorbot
   class Web < Sinatra::Base
     get '/' do
-      'Math is good for you.'
+      'Mentoring is soooooo fun!'
     end
   end
 end
