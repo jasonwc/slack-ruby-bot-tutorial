@@ -6,9 +6,7 @@ module SlackMentorbot
         mentors = response.parsed_response
 
         send_message client, data.channel, "Here is the list of mentors: "
-        mentors.each do |mentor|
-          send_message client, data.channel, "#{mentor['name']}"
-        end
+        send_message client, data.channel, "#{mentors.map{|m| m['name']}.join("\n")}"
       end
 
       command 'signup as mentor' do |client, data, _match|
