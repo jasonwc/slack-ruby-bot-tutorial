@@ -8,6 +8,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    coderay (1.1.0)
     diff-lcs (1.2.5)
     eventmachine (1.0.8)
     faraday (0.9.2)
@@ -36,10 +37,15 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    method_source (0.8.2)
     minitest (5.8.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     oj (2.13.1)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (2.15.3)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -76,6 +82,7 @@ GEM
       faraday_middleware
       faye-websocket
       json
+    slop (3.6.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -91,9 +98,13 @@ PLATFORMS
 DEPENDENCIES
   foreman
   httparty
+  pry
   puma
   rack-test
   rake
   rspec
   sinatra
   slack-ruby-bot
+
+BUNDLED WITH
+   1.10.6

@@ -4,6 +4,7 @@ gem 'slack-ruby-bot'
 gem 'puma'
 gem 'sinatra'
 gem 'httparty'
+gem 'pry'
 
 group :development, :test do
   gem 'rake'
