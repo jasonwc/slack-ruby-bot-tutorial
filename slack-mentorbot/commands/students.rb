@@ -17,8 +17,13 @@ module SlackMentorbot
           name: user_info['user']['name'],
           slack_id: data.user
         }
-        HTTParty.post('http://localhost:3000/students', query: { student: user_params })
-        send_message client, data.channel, "Saved student into api"
+        response = HTTParty.post('http://localhost:3000/students.json', query: { student: user_params })
+
+        if response['id'].present?
+          send_message client, data.channel, "Signed you up, <@#{data.user}>!"
+        else
+          send_message client, data.channel, "You're already signed up, <@#{data.user}>!"
+        end
       end
     end
   end
