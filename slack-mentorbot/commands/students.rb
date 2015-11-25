@@ -3,10 +3,12 @@ module SlackMentorbot
     class Students < SlackRubyBot::Commands::Base
       command 'students' do |client, data, _match|
         response = HTTParty.get('http://localhost:3000/students.json')
-        students = response.parsed_response
-
-        send_message client, data.channel, "Here is the list of students: "
-        send_message client, data.channel, "#{students.map{|s| s['name']}.join("\n")}"
+        if response.empty?
+          send_message client, data.channel, "There currently zero students"
+        else
+          students = response.parsed_response
+          send_message client, data.channel, "Here is the list of students: \n #{students.map{|s| s['name']}.join("\n")}"
+        end
       end
 
       command 'signup as student' do |client, data, _match|
