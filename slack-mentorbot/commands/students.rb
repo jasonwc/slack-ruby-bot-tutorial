@@ -25,6 +25,15 @@ module SlackMentorbot
           send_message client, data.channel, "You're already signed up, <@#{data.user}>!"
         end
       end
+
+      command 'remove as student' do |client, data, _match|
+        response = HTTParty.delete('http://localhost:3000/students/' + data.user)
+        if response['delete'] == true
+          send_message client, data.channel, "You have been removed as a student"
+        else
+          send_message client, data.channel, "You were not a student"
+        end
+      end
     end
   end
 end
