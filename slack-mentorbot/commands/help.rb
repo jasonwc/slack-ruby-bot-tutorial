@@ -8,8 +8,10 @@ module SlackMentorbot
                 whoami \n \
                 mentors \n \
                 signup as mentor \n \
+                remove as mentor \n \
                 students \n \
-                signup as student"
+                signup as student \n \
+                remove as student"
         send_message client, data.channel, menu
       end
       command 'whoami' do |client, data, _match|
