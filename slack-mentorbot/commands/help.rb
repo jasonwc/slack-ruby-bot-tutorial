@@ -9,6 +9,7 @@ module SlackMentorbot
                 mentors \n \
                 signup as mentor \n \
                 remove as mentor \n \
+                mentor from start_time to end_time \n \
                 students \n \
                 signup as student \n \
                 remove as student"

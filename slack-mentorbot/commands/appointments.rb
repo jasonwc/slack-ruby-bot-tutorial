@@ -13,11 +13,6 @@ module SlackMentorbot
           send_message client, data.channel, "#{student['name']} is meeting with #{mentor['name']} from #{appointment['start_time']} to #{appointment['end_time']} on #{appointment['appointment_date']}"
         end
       end
-
-      command 'sign up for appointment' do |client, data, _match|
-        # determine if they are a student or mentor
-        # create or update an appointment
-      end
     end
   end
 end
