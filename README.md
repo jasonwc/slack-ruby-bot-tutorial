@@ -7,3 +7,6 @@ Clone the repo and make a .env file from the .env.sample file. Then run foreman 
 
 # Notes
 This requires a rails app running locally that has the data we'll be using. A sample can be found here: https://github.com/jasonwc/sample_dpl_mentors_api
+
+# Contributers
+Jason Carter and Jordan Wu
