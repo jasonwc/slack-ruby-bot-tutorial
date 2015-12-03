@@ -34,6 +34,35 @@ module SlackMentorbot
           send_message client, data.channel, "You were not a student"
         end
       end
+
+      command 'student signup for' do |client, data, _match|
+        # check to see if they are a student
+        is_student = HTTParty.get('http://localhost:3000/' + data.user)
+        if is_student['student'] == true
+          # get appointments
+          appointments = HTTParty.get('http://localhost:3000/appointments.json')
+          # find the appointment id to update
+          appointment_id = nil
+          appointments.each do |appointment|
+            # find the correct appointment id
+            if _match[:expression].include? appointment['mentor']
+              appointment_id = appointment['id'].to_s
+              break
+            end
+          end
+          # if there no mentor with the slack_id
+          if appointment_id.nil?
+            send_message client, data.channel, "#{_match[:expression]} is not a mentoring"
+          else
+            # update the appointment with student id
+            param = {student_slack_id: data.user}
+            response = HTTParty.put('http://localhost:3000/appointments/' + appointment_id + '.json', query: param)
+            send_message client, data.channel, "<@#{data.user}> now have an appointment with <@#{response['mentor']}> today from #{response['start_time']} to #{response['end_time']}"
+          end
+        else
+          send_message client, data.channel, "You must be a student to signup for a mentor"
+        end
+      end
     end
   end
 end
